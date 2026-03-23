@@ -1,25 +1,41 @@
-image: node:24
+name: Deploy to GitHub Pages
 
+on:
+  push:
+    branches:
+      - master
 
+permissions:
+  contents: read
+  pages: write
+  id-token: write
 
-pages:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-  script:
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
 
-    - npm install
+      - name: Install dependencies
+        run: npm install
 
-    - npm run build
+      - name: Build
+        run: npm run build
 
-    - cp -r dist/* public
+      - name: Upload to GitHub Pages
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./dist
 
-  artifacts:
-
-    paths:
-
-      - public
-
-  only:
-
-
-    - main
-
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v4
