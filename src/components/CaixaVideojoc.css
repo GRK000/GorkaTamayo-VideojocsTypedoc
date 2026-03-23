@@ -1,0 +1,25 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.CaixaVideojoc{
+    width: 90%;
+    background-color: white;
+    display: grid;
+    grid-template-rows: 1fr 4fr;
+    grid-template-columns: 5fr 1fr;
+    grid-template-areas: "title preu"
+                         "descripcio descripcio";
+}
+.title{
+    grid-area: title;
+    border:1px solid black;
+}
+.preu{
+    grid-area: preu;
+    border:1px solid black;
+}
+.descripcio{
+    grid-area: descripcio;
+    border:1px solid black;
+}

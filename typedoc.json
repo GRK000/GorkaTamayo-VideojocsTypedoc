@@ -1,0 +1,20 @@
+{
+
+  "entryPoints": ["./src"],
+
+  "entryPointStrategy": "expand",
+
+  "out": "./docs",
+
+  "exclude": [
+
+    "**/*.test.tsx",
+
+    "**/*.spec.tsx",
+
+    "**/node_modules/**"
+
+  ]
+
+
+}
